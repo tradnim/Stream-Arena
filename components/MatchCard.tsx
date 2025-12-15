@@ -48,14 +48,12 @@ const MatchCard: React.FC<MatchCardProps> = ({ match, onClick, settings }) => {
       className={`group relative bg-zinc-900/50 border border-zinc-800 rounded-2xl overflow-hidden hover:border-cyan-500/50 cursor-pointer flex flex-col h-full outline-none ${motionClasses} ${focusClasses}`}
     >
       {/* Background Poster Overlay */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 group-focus:opacity-10 pointer-events-none ${!settings.reduceMotion ? 'transition-opacity duration-500' : ''}`}>
-        {match.poster && (
-          <img 
-            src={StreamedApi.getPosterUrl(match.poster)} 
-            alt="" 
-            className={`w-full h-full object-cover blur-sm scale-110`} 
-          />
-        )}
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 group-focus:opacity-20 pointer-events-none ${!settings.reduceMotion ? 'transition-opacity duration-500' : ''}`}>
+        <img 
+          src={match.poster ? StreamedApi.getPosterUrl(match.poster) : StreamedApi.getFallbackImage(match.category)} 
+          alt="" 
+          className={`w-full h-full object-cover blur-sm scale-110 grayscale-[50%]`} 
+        />
       </div>
 
       {/* Card Header */}

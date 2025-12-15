@@ -295,11 +295,11 @@ function App() {
                    onClick={() => handleMatchClick(heroMatch)}>
                 {/* Background Image with Blur */}
                 <div className="absolute inset-0">
-                  {heroMatch.poster ? (
-                    <img src={StreamedApi.getPosterUrl(heroMatch.poster)} alt="" className={`w-full h-full object-cover opacity-60 ${!settings.reduceMotion && 'group-hover:scale-105 transition-transform duration-700'}`} />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-r from-zinc-900 to-zinc-800"></div>
-                  )}
+                  <img 
+                    src={heroMatch.poster ? StreamedApi.getPosterUrl(heroMatch.poster) : StreamedApi.getFallbackImage(heroMatch.category)} 
+                    alt="" 
+                    className={`w-full h-full object-cover opacity-60 ${!settings.reduceMotion && 'group-hover:scale-105 transition-transform duration-700'}`} 
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent"></div>
                 </div>
